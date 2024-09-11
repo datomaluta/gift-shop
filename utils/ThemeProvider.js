@@ -10,7 +10,7 @@ const ThemeProvider = ({ children, ...props }) => {
       // enableSystem={true} // Optionally enable system theme
       {...props}
     >
-      {children} 
+      {children}
     </NextThemesProvider>
   );
 };
