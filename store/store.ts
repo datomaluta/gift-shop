@@ -1,12 +1,14 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import exampleReducer from "./slices/exampleSlice";
 import cartReducer from "./slices/cartSlice";
+import navbarReducer from "./slices/navbarSlice";
 import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
 import { persistReducer, persistStore } from "redux-persist";
 
 const rootReducer = combineReducers({
   example: exampleReducer,
   cart: cartReducer,
+  navbar: navbarReducer,
 });
 
 const persistConfig = {
