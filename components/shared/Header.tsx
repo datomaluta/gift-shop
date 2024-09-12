@@ -1,13 +1,16 @@
 "use client";
 
 import { navbarCategoryLinks } from "@/constants";
+import { toggleCart } from "@/store/slices/cartSlice";
 import Link from "next/link";
 import { BsFillBasketFill } from "react-icons/bs";
 import { FaChevronDown, FaUser } from "react-icons/fa";
 import { MdOutlineSearch } from "react-icons/md";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { useDispatch } from "react-redux";
 
 const Header = () => {
+  const dispatch = useDispatch();
   return (
     <>
       <header className="max-w-[1200px] mx-auto text-primary  flex justify-between items-center py-4 px-4 xl:px-0">
@@ -60,7 +63,10 @@ const Header = () => {
             <RxHamburgerMenu />
           </button>
 
-          <button className="flex items-center gap-1 font-medium relative hover:text-tint">
+          <button
+            onClick={() => dispatch(toggleCart())}
+            className="flex items-center gap-1 font-medium relative hover:text-tint"
+          >
             <BsFillBasketFill className="text-2xl" />
             <span
               className="bg-primary text-white  h-5 w-5 text-[10px]  flex items-center justify-center rounded-full
