@@ -3,15 +3,29 @@
 import { navbarCategoryLinks } from "@/constants";
 import { toggleCart } from "@/store/slices/cartSlice";
 import { toggleNavbar } from "@/store/slices/navbarSlice";
+import { AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { useRef, useState } from "react";
 import { BsFillBasketFill } from "react-icons/bs";
 import { FaChevronDown, FaUser } from "react-icons/fa";
+import { FaRegCircleUser } from "react-icons/fa6";
+import { IoLogOutOutline } from "react-icons/io5";
 import { MdOutlineSearch } from "react-icons/md";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useDispatch } from "react-redux";
+import { motion } from "framer-motion";
+import useOutsideClick from "@/hooks/useOutsideClick";
 
 const Header = () => {
   const dispatch = useDispatch();
+  const [userDropDownIsOpen, setUserDropDownIsOpen] = useState(false);
+  const userDropdownRef = useRef<HTMLDivElement | null>(null);
+  const userButtonRef = useRef<HTMLButtonElement | null>(null);
+
+  useOutsideClick([userDropdownRef, userButtonRef], () => {
+    setUserDropDownIsOpen(false);
+  });
+
   return (
     <>
       <header className=" text-primary  fixed top-0  w-full left-1/2 -translate-x-1/2 z-40 backdrop-blur-lg">
@@ -29,11 +43,11 @@ const Header = () => {
             <Link className="hover:underline" href="/">
               Home
             </Link>
-            <div className="relative group h-full flex items-center">
+            <div className="relative group h-full flex items-center ">
               <p className="flex items-center gap-2 cursor-pointer ">
                 Shop by Category <FaChevronDown className="text-xs" />
               </p>
-              <div className="bg-white  flex-col gap-6 text-sm px-4 py-4 shadow-md border-t-2  border-primary rounded-b absolute top-[100%]  whitespace-nowrap hidden group-hover:flex">
+              <div className="bg-white flex-col gap-6 text-sm px-4 py-4 shadow-md border-t-2  border-primary rounded-b absolute top-[100%]  whitespace-nowrap pointer-events-none opacity-0 group-hover:opacity-100 transition-all flex ">
                 {navbarCategoryLinks.map((link) => (
                   <Link
                     key={link.id}
@@ -79,9 +93,36 @@ const Header = () => {
               </span>
             </button>
 
-            <button className="hover:text-tint">
-              <FaUser className="text-xl" />
-            </button>
+            <div className="relative  h-[50px] flex items-center">
+              <button
+                ref={userButtonRef}
+                onClick={() => setUserDropDownIsOpen((currState) => !currState)}
+                className="hover:text-tint"
+              >
+                <FaUser className="text-xl" />
+              </button>
+              <AnimatePresence>
+                {userDropDownIsOpen && (
+                  <motion.div
+                    ref={userDropdownRef}
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.1 }}
+                    className="bg-white px-4 py-4 rounded absolute top-[100%] right-0 w-[200px] flex gap-4 flex-col"
+                  >
+                    <Link href={"/profile"} className="flex items-center gap-2">
+                      <FaRegCircleUser className="text-xl" />
+                      My Profile
+                    </Link>
+                    <button className="flex gap-2 items-center border-t pt-3">
+                      <IoLogOutOutline className="text-2xl" />
+                      Log out
+                    </button>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
         </div>
       </header>
