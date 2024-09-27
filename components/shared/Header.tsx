@@ -47,7 +47,7 @@ const Header = () => {
               <p className="flex items-center gap-2 cursor-pointer ">
                 Shop by Category <FaChevronDown className="text-xs" />
               </p>
-              <div className="bg-white flex-col gap-6 text-sm px-4 py-4 shadow-md border-t-2  border-primary rounded-b absolute top-[100%]  whitespace-nowrap pointer-events-none opacity-0 group-hover:opacity-100 transition-all flex ">
+              <div className="bg-white flex-col gap-6 text-sm px-4 py-4 shadow-md border-t-2  border-primary rounded-b absolute top-[100%]  whitespace-nowrap opacity-0 group-hover:opacity-100 transition-all flex pointer-events-none group-hover:pointer-events-auto">
                 {navbarCategoryLinks.map((link) => (
                   <Link
                     key={link.id}

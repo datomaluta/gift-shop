@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.className} min-h-screen text-neutral-600 h-[4000px]`}
+        className={`${inter.className} min-h-screen text-navy-blue h-[4000px]`}
       >
         <Providers>
           <Background />
