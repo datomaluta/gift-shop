@@ -15,7 +15,7 @@ const container = (delay: number) => ({
 
 const Hero = () => {
   return (
-    <div className="flex gap-14 lg:gap-10 items-start lg:pt-32 pt-12 flex-col lg:flex-row">
+    <div className="flex gap-14 lg:gap-10 items-start lg:pt-32 pt-12 flex-col lg:flex-row h-[80vh]">
       <div className="lg:w-[40%] w-full text-center lg:text-left">
         <motion.h1
           variants={container(0)}

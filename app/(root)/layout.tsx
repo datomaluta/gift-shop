@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "./../globals.css";
 import { Inter } from "next/font/google";
 import Header from "@/components/shared/Header";
-
 import { Providers } from "@/lib/providers";
 import Background from "@/components/shared/Background";
 import Cart from "@/components/ui/Cart";

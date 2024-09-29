@@ -4,7 +4,7 @@ const NewArrivals = () => {
   return (
     <div className="mt-32">
       <div className="flex flex-col gap-6 items-center justify-center">
-        <h1 className="text-3xl font-bold">New Arrivals</h1>
+        <h1 className="text-3xl font-bold tracking-wide">New Arrivals</h1>
         <span className="bg-secondary w-10 h-[6px]"></span>
       </div>
 
@@ -14,7 +14,6 @@ const NewArrivals = () => {
         <ProductCard />
         <ProductCard />
       </div>
-      {/* <ProductCard /> */}
     </div>
   );
 };
