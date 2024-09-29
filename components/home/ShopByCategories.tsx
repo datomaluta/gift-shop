@@ -1,9 +1,11 @@
 import React from "react";
 import CategoryCard from "../shared/CategoryCard";
+import { motion } from "framer-motion";
+import AnimatedDivForLanding from "../shared/AnimatedDivForLanding";
 
 const ShopByCategories = () => {
   return (
-    <div className="mt-32">
+    <AnimatedDivForLanding>
       <div className="flex flex-col gap-6 items-center justify-center">
         <h1 className="text-3xl font-bold tracking-wide">Shop by Categories</h1>
         <span className="bg-secondary w-10 h-[6px]"></span>
@@ -52,7 +54,7 @@ const ShopByCategories = () => {
           image={"/images/categories/office-category.jpg"}
         />
       </div>
-    </div>
+    </AnimatedDivForLanding>
   );
 };
 
